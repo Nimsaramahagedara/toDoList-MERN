@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  background-color: white;
+  width: 50%;
+  border-radius: 1%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  transform: translate(-50%,-80%);
+}
+#root{
+  background-color: #efefef;
+  height: 100vh;
+  width: 100%;
+}
+.list-Item{
+  margin: 20px auto;
+}
+
