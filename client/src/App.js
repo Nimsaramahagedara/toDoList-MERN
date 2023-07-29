@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -53,9 +53,9 @@ function App() {
   const updateItem = async (e) =>{
     e.preventDefault();
     try {
-      const res = await axios.put(`http://localhost:8080/api/update/${isUpdating}`, {item:updateItemText})
+      await axios.put(`http://localhost:8080/api/update/${isUpdating}`, {item:updateItemText})
       const findUpdatedIndex = allListItems.findIndex(item => item._id === isUpdating);
-      const updateItem = allListItems[findUpdatedIndex].item = updateItemText;
+      allListItems[findUpdatedIndex].item = updateItemText;
       setIsUpdating('')
       setUpdateItemText('')
       setItemText('')
