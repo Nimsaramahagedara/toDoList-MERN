@@ -2,6 +2,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+const BASE_URL = process.env.BASE_URL;
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
   const newItem = async (e)=>{
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8080/api/add',{item : itemText});
+      const res = await axios.post(`${BASE_URL}/api/add`,{item : itemText});
       console.log(res);
       setAllList(prev => [...prev, res.data]);
       setItemText('');
@@ -27,7 +28,7 @@ function App() {
   useEffect(()=>{
     const getItems = async ()=>{
       try {
-        const res =await axios.get('http://localhost:8080/api/get');
+        const res =await axios.get(`${BASE_URL}/api/get`);
         setAllList(res.data);
         console.log("fetch all");
       } catch (error) {
@@ -37,10 +38,11 @@ function App() {
     getItems();
   },[])
 
+
   //Delete item onClick
   const del = async (id)=>{
     try {
-      const res = await axios.delete(`http://localhost:8080/api/delete/${id}`);
+      const res = await axios.delete(`${BASE_URL}/api/delete/${id}`);
       const newList = allListItems.filter(item => item._id !== id);
       setAllList(newList);
       console.log(res);
@@ -53,7 +55,7 @@ function App() {
   const updateItem = async (e) =>{
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/api/update/${isUpdating}`, {item:updateItemText})
+      await axios.put(`${BASE_URL}/api/update/${isUpdating}`, {item:updateItemText})
       const findUpdatedIndex = allListItems.findIndex(item => item._id === isUpdating);
       allListItems[findUpdatedIndex].item = updateItemText;
       setIsUpdating('')
