@@ -73,12 +73,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1> To Do List </h1>
-      <form onSubmit={e => newItem(e)} className='d-flex justify-content-between'>
-        <div className="mb-3">
-          <input type="text" className="form-control" name="listName" id="listName" aria-describedby="helpId" placeholder="item Name" onChange={e =>{setItemText(e.target.value)}} value={itemText}/>
+      <h4 className='p-3'> First MERN App - TO DO List </h4>
+      <form onSubmit={e => newItem(e)} className='d-flex justify-content-between container-fluid'>
+        <div className="mb-3 d-flex justify-content-between w-100 align-items-center">
+          <input type="text" className="form-control w-75" name="listName" id="listName" aria-describedby="helpId" placeholder="item Name" onChange={e =>{setItemText(e.target.value)}} value={itemText}/>
+          <button type="submit" className="btn btn-primary w-20">Add Item</button>
         </div>
-        <button type="submit" className="btn btn-primary w-10">Add Item</button>
+        
       </form>
       <div className='toDo-ListItems'>
         {
@@ -103,6 +104,8 @@ function App() {
           ))
         }
       </div>
+      <p className='text-secondry mb-0'>Nimsara mahagedara</p>
+      <a target="_blank" rel='noreferrer' href='https://github.com/Nimsaramahagedara'>Go to GitHub</a>
     </div>
   );
 }
